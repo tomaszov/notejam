@@ -2,20 +2,20 @@
 Notejam: Express
 ****************
 
-Notejam application implemented using `Express.js <http://expressjs.com/>`_ microframework.
+Notejam application deployed using NodeJS and Docker
 
-Express version: 4.2
+========
+Workflow
+========
 
-Middlewares/extentions used:
+-------------
+Updating code
+-------------
 
-* `Passport.js <http://passportjs.org/>`_ for authentication
-* `Node ORM 2 <https://github.com/dresende/node-orm2>`_ for database
-* `Mocha <http://mochajs.org/>`_ and `Superagent <http://visionmedia.github.io/superagent/>`_ for testing
-* ... and `others <https://github.com/komarserjio/notejam/blob/express/express/notejam/package.json>`_
+    $ git add .
+    $ git commit -m 'change'
+    $ git push
 
-==========================
-Installation and launching
-==========================
 
 -------
 Cloning
@@ -58,26 +58,3 @@ Start built-in web server:
     $ DEBUG=* ./bin/www
 
 Go to http://127.0.0.1:3000/ in your browser
-
-------------------
-Running unit tests
-------------------
-
-Run unit tests:
-
-.. code-block:: bash
-
-    $ cd YOUR_PROJECT_DIR/express/notejam/
-    $ ./node_modules/mocha/bin/mocha tests
-
-============
-Contribution
-============
-
-Please send your pull requests in the ``master`` branch.
-
-Always prepend your commits with a framework name:
-
-.. code-block:: bash
-
-    Express: Implemented sign in functionality
