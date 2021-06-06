@@ -19,11 +19,11 @@ Updating code
     $ git push
 
 
--------
-Cloning
--------
+--------------
+Build and push
+--------------
 
-Clone the repo:
+"git push" triggers 
 
 .. code-block:: bash
 
