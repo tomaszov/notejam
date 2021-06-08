@@ -23,8 +23,6 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        with:
-          tf_actions_working_dir: 'terraform'
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
