@@ -68,3 +68,4 @@ resource "azurerm_app_service" "notejam" {
     }
     app_settings = local.env_variables
 }
+
