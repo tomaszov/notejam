@@ -14,6 +14,7 @@ jobs:
       ARM_CLIENT_SECRET: ${{secrets.TF_ARM_CLIENT_SECRET}}
       ARM_SUBSCRIPTION_ID: ${{secrets.TF_ARM_SUBSCRIPTION_ID}}
       ARM_TENANT_ID: ${{secrets.TF_ARM_TENANT_ID}}
+      tf_actions_working_dir: terraform
 
     steps:
       - uses: actions/checkout@v2
@@ -29,4 +30,5 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
+
 
