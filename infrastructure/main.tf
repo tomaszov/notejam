@@ -65,7 +65,7 @@ resource "azurerm_app_service" "notejam" {
   }
   site_config {
     scm_type = "GitHub"
-    linux_fx_version = "DOCKER|nordcloudapps.azurecr.io/notejam:latest"
+    linux_fx_version = "DOCKER|nordcloudapps/notejam:latest"
     always_on        = "true"
   }
   identity {
