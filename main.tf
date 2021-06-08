@@ -1,8 +1,8 @@
 locals {
- env_variables = {
-   DOCKER_REGISTRY_SERVER_URL            = "https://nordcloudapps.azurecr.io"
-   WEBSITES_ENABLE_APP_SERVICE_STORAGE   = false
- }
+  env_variables = {
+    DOCKER_REGISTRY_SERVER_URL          = "https://nordcloudapps.azurecr.io"
+    WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
+  }
 }
 
 provider "azurerm" {
@@ -11,7 +11,7 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    resource_group_name  = "nordcloud"
+    resource_group_name  = "tf"
     storage_account_name = "notejamtf"
     container_name       = "tfstatedevops"
     key                  = "terraform.tfstate"
@@ -40,32 +40,37 @@ resource "azurerm_subnet" "subnet" {
 }
 
 resource "azurerm_app_service_plan" "nordcloud_notejam" {
-    name                = "nordcloud_notejam"
-    location            = azurerm_resource_group.nordcloud.location
-    resource_group_name = azurerm_resource_group.nordcloud.name
-    kind                = "Linux"
-    sku {
-        tier = "Basic"
-        size = "B1"
-    }
+  name                = "nordcloud_notejam"
+  location            = azurerm_resource_group.nordcloud.location
+  resource_group_name = azurerm_resource_group.nordcloud.name
+  kind                = "Linux"
+  sku {
+    tier = "Basic"
+    size = "B1"
+  }
 
-    reserved            = true
+  reserved = true
 
 }
 
 resource "azurerm_app_service" "notejam" {
-    name                    = "notejam"
-    location                = azurerm_resource_group.nordcloud.location
-    resource_group_name     = azurerm_resource_group.nordcloud.name
-    app_service_plan_id     = azurerm_app_service_plan.nordcloud_notejam.id
-    client_affinity_enabled = true
-    site_config {
+  name                    = "notejam"
+  location                = azurerm_resource_group.nordcloud.location
+  resource_group_name     = azurerm_resource_group.nordcloud.name
+  app_service_plan_id     = azurerm_app_service_plan.nordcloud_notejam.id
+  client_affinity_enabled = true
+  source_control {
+    repo_url = "https://github.com/tomaszov/notejam"
+    branch = "main"
+  }
+  site_config {
+    scm_type = "GitHub"
     linux_fx_version = "DOCKER|nordcloudapps.azurecr.io/notejam:latest"
     always_on        = "true"
-    }
-    identity {
-      type         = "SystemAssigned"
-    }
-    app_settings = local.env_variables
+  }
+  identity {
+    type = "SystemAssigned"
+  }
+  app_settings = local.env_variables
 }
 
