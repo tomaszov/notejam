@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: nordcloudapps.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_097044639deb4bce98cb857ca2806c3e }}/notejam:${{ github.sha }}
-        file: ./Dockerfile
+        file: ./app/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
