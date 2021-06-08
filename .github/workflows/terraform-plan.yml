@@ -24,8 +24,13 @@ jobs:
       - name: Terraform Init
         uses: hashicorp/terraform-github-actions@master
         with:
+          tf_actions_version: 0.12.13
           tf_actions_working_dir: 'terraform'
           tf_actions_subcommand: "init"
+          args: -var="client_secret=${{ secrets.TF_ARM_CLIENT_SECRET }}"
+                -var="client_id=${{ secrets.TF_ARM_CLIENT_ID }}"
+                -var="tenant_id=${{ secrets.TF_ARM_TENANT_ID }}"
+                -var="sub=${{ secrets.TF_ARM_SUBSCRIPTION_ID }}"
 
       - name: Terraform Format
         run: terraform fmt -check
