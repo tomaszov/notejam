@@ -6,3 +6,4 @@ RUN npm install
 RUN node db.js
 ENTRYPOINT ["./entrypoint.sh"]
 
+
