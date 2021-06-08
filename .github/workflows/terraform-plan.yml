@@ -14,7 +14,9 @@ jobs:
       ARM_CLIENT_SECRET: ${{secrets.TF_ARM_CLIENT_SECRET}}
       ARM_SUBSCRIPTION_ID: ${{secrets.TF_ARM_SUBSCRIPTION_ID}}
       ARM_TENANT_ID: ${{secrets.TF_ARM_TENANT_ID}}
-
+      DOCKER_REGISTRY_SERVER_USERNAME: ${{secrets.REGISTRY_SERVER_USERNAME}}
+      DOCKER_REGISTRY_SERVER_PASSWORD: ${{secrets.REGISTRY_SERVER_PASSWORD}}
+    
     steps:
       - uses: actions/checkout@v2
 
@@ -29,6 +31,3 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
-
-
-

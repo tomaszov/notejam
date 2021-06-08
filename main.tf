@@ -1,8 +1,6 @@
 locals {
  env_variables = {
    DOCKER_REGISTRY_SERVER_URL            = "https://nordcloudapps.azurecr.io"
-   DOCKER_REGISTRY_SERVER_USERNAME       = ${{secrets.REGISTRY_SERVER_USERNAME}}
-   DOCKER_REGISTRY_SERVER_PASSWORD       = ${{secrets.REGISTRY_SERVER_PASSWORD}}
    WEBSITES_ENABLE_APP_SERVICE_STORAGE   = false
  }
 }
