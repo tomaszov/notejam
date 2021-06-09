@@ -1,2 +1,2 @@
 #!/bin/sh
-DEBUG=* ./bin/www
+DEBUG=* /opt/notejam/bin/www
