@@ -4,4 +4,5 @@ COPY ./app/notejam /opt/notejam
 WORKDIR /opt/notejam
 RUN npm install
 RUN node db.js
+RUN chmod +x entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
