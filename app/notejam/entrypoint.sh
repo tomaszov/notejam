@@ -1,2 +1,3 @@
 #!/bin/sh
-DEBUG=* /opt/notejam/bin/www
+DEBUG=* node ./bin/www
+
