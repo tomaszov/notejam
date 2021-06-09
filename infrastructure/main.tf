@@ -1,7 +1,11 @@
 locals {
   env_variables = {
-    DOCKER_REGISTRY_SERVER_URL          = "https://nordcloudapps.azurecr.io"
+    DOCKER_REGISTRY_SERVER_URL          = "https://${azurerm_container_registry.nordcloudapps.login_server}"
+    DOCKER_REGISTRY_SERVER_USERNAME     = azurerm_container_registry.nordcloudapps.admin_username
+    DOCKER_REGISTRY_SERVER_PASSWORD     = azurerm_container_registry.nordcloudapps.admin_password
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
+    WEBSITES_PORT = 3000
+    
   }
 }
 
@@ -21,6 +25,15 @@ terraform {
 resource "azurerm_resource_group" "nordcloud" {
   name     = "nordcloud"
   location = "westeurope"
+}
+
+# Azure Container Regristry
+resource "azurerm_container_registry" "nordcloudapps" {
+  name                     = "nordcloudapps"
+  resource_group_name      = "tf"
+  location                 = "westeurope"
+  sku                      = "Basic"
+  admin_enabled            = true
 }
 
 #Create Virtual Network
@@ -64,7 +77,6 @@ resource "azurerm_app_service" "notejam" {
     branch = "main"
   }
   site_config {
-    scm_type = "GitHub"
     linux_fx_version = "DOCKER|nordcloudapps/notejam:latest"
     always_on        = "true"
   }
