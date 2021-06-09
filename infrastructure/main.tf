@@ -77,7 +77,7 @@ resource "azurerm_app_service" "notejam" {
     branch = "main"
   }
   site_config {
-    linux_fx_version = "DOCKER|nordcloudapps/notejam:latest"
+    linux_fx_version = "DOCKER|https://nordcloudapps.azurecr.io/notejam:latest"
     always_on        = "true"
   }
   identity {
