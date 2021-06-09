@@ -4,6 +4,7 @@ locals {
     DOCKER_REGISTRY_SERVER_USERNAME     = azurerm_container_registry.nordcloudapps.admin_username
     DOCKER_REGISTRY_SERVER_PASSWORD     = azurerm_container_registry.nordcloudapps.admin_password
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
+    WEBSITES_PORT                       = 3000
     
   }
 }
