@@ -20,8 +20,6 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
-        with:
-          tf_actions_working_dir: 'infrastructure'
 
       - name: Terraform Init
         run: terraform init
