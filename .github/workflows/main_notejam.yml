@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: nordcloudapps.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_097044639deb4bce98cb857ca2806c3e }}/notejam:${{ github.sha }}
+        tags: nordcloudapps.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_097044639deb4bce98cb857ca2806c3e }}/notejam:latest
         file: ./app/Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'notejam'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_7403121ec8b545ef8b01cefe51d4a757 }}
-        images: 'nordcloudapps.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_097044639deb4bce98cb857ca2806c3e }}/notejam:${{ github.sha }}'
+        images: 'nordcloudapps.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_097044639deb4bce98cb857ca2806c3e }}/notejam:latest'

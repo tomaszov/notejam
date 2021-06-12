@@ -1,2 +1,3 @@
 #!/bin/sh
-DEBUG=* ./bin/www
+DEBUG=* node ./bin/www
+
