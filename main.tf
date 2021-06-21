@@ -49,7 +49,7 @@ resource "azurerm_subnet" "subnet" {
   name                 = "subnet"
   resource_group_name  = azurerm_resource_group.nordcloud.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["192.168.1.0/24"]
+  address_prefixes     = ["192.168.0.0/24"]
 }
 
 resource "azurerm_app_service_plan" "nordcloud_notejam" {
