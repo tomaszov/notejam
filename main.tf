@@ -49,7 +49,7 @@ resource "azurerm_subnet" "subnet" {
   name                 = "subnet"
   resource_group_name  = azurerm_resource_group.nordcloud.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["192.168.0.0/24"]
+  address_prefixes     = ["192.168.3.0/24"]
 }
 
 resource "azurerm_app_service_plan" "nordcloud_notejam" {
@@ -79,6 +79,11 @@ resource "azurerm_app_service" "notejam" {
   site_config {
     linux_fx_version = "DOCKER|nordcloudapps.azurecr.io/notejam:latest"
     always_on        = "true"
+  }
+  lifecycle {
+    ignore_changes = [
+      site_config["scm_type"]
+    ]
   }
   identity {
     type = "SystemAssigned"
