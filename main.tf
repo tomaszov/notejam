@@ -39,7 +39,7 @@ resource "azurerm_container_registry" "nordcloudapps" {
 #Create Virtual Network
 resource "azurerm_virtual_network" "vnet" {
   name                = "nordcloud-vnet"
-  address_space       = ["192.168.1.0/16"]
+  address_space       = ["192.168.0.0/16"]
   location            = "westeurope"
   resource_group_name = azurerm_resource_group.nordcloud.name
 }
